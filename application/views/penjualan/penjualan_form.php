@@ -1,9 +1,9 @@
 <section class="content-header">
-  <h2>Penjualan</h2>
-  <ol class="breadcrumb text-right">
-    <li><a href="#"></a></li>
-    <li class="active">Penjualan</li>
-  </ol>
+	<h2>Penjualan</h2>
+	<ol class="breadcrumb text-right">
+		<li><a href="#"></a></li>
+		<li class="active">Penjualan</li>
+	</ol>
 </section>
 
 <section class="content">
@@ -18,8 +18,8 @@
 							</td>
 							<td>
 								<div class="form-group">
-								<input type="date" id="date" value="<?=date('Y-m-d')?>" class="form-control">
-							</div>
+									<input type="date" id="date" value="<?= date('Y-m-d') ?>" class="form-control">
+								</div>
 							</td>
 						</tr>
 						<tr>
@@ -28,7 +28,7 @@
 							</td>
 							<td>
 								<div class="form-group">
-									<input type="text"  id="user" value="<?=$this->fungsi->user_login()->nama_user?>" class="form-control" readonly>
+									<input type="text" id="user" value="<?= $this->fungsi->user_login()->nama_user ?>" class="form-control" readonly>
 								</div>
 							</td>
 						</tr>
@@ -56,17 +56,17 @@
 								<label for="barcode">Barcode</label>
 							</td>
 							<td>
-							<div class="form-group input-group">
-								<input type="hidden" name="id_produk">
-								<input type="hidden" name="harga">
-								<input type="hidden" name="stock">
-								<input type="text" id="barcode" class="form-control" autofocus>
-								<span class="input-group-btn">
-									<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-item">
-										<i class="fa fa-search"></i>
-									</button>
-								</span>
-							</div>
+								<div class="form-group input-group">
+									<input type="hidden" name="id_produk">
+									<input type="hidden" name="harga">
+									<input type="hidden" name="stock">
+									<input type="text" id="barcode" class="form-control" autofocus>
+									<span class="input-group-btn">
+										<button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#modal-item">
+											<i class="fa fa-search"></i>
+										</button>
+									</span>
+								</div>
 							</td>
 						</tr>
 						<tr>
@@ -105,7 +105,7 @@
 			</div>
 		</div>
 	</div>
-<br>
+	<br>
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="card card-widget">
@@ -118,22 +118,20 @@
 								<th>Produk item</th>
 								<th>Harga</th>
 								<th>Qty</th>
-								<th width="10%">Diskon Item</th>
-								<th width="15%">Total</th>
+								<th>Diskon Item</th>
+								<th>Total</th>
 								<th>Opsi</th>
 							</tr>
 						</thead>
 						<tbody id="cart_table">
-							<tr>
-								<td colspan="9" class="text-center">Tidak ada Item</td>
-							</tr>
+
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
-<br>
+	<br>
 	<div class="row">
 		<div class="col-lg-3">
 			<div class="card card-widget">
@@ -179,7 +177,7 @@
 				<div class="card-body">
 					<table width="100%">
 						<tr>
-							<td style="vertical-align: top; width: 30%"> 
+							<td style="vertical-align: top; width: 30%">
 								<label for="cash"> Cash</label>
 							</td>
 							<td>
@@ -189,7 +187,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td style="vertical-align: top; width: 30%"> 
+							<td style="vertical-align: top; width: 30%">
 								<label for="change"> Change</label>
 							</td>
 							<td>
@@ -236,54 +234,49 @@
 </section>
 
 
-	<div class="modal fade" tabindex="-1" id="modal-item">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Select Product Item</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body table-responsive">
-					<table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
-						<thead>
+<div class="modal fade" tabindex="-1" id="modal-item">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Select Product Item</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body table-responsive">
+				<table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+							<th>Barcode</th>
+							<th>Nama</th>
+							<th>Jenis</th>
+							<th>Harga</th>
+							<th>Stock</th>
+							<th>Opsi</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach ($produk as $p => $data) { ?>
 							<tr>
-								<th>Barcode</th>
-								<th>Nama</th>
-								<th>Jenis</th>
-								<th>Harga</th>
-								<th>Stock</th>
-								<th>Opsi</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php foreach($produk as $p => $data) { ?>
-							<tr>
-								<td><?=$data->barcode?></td>
-								<td><?=$data->nama_produk?></td>
-								<td><?=$data->nama_jenis?></td>
-								<td class="text-right"><?=indo_currency($data->harga)?></td>
-								<td class="text-right"><?=$data->stock?></td>
+								<td><?= $data->barcode ?></td>
+								<td><?= $data->nama_produk ?></td>
+								<td><?= $data->nama_jenis ?></td>
+								<td class="text-right"><?= indo_currency($data->harga) ?></td>
+								<td class="text-right"><?= $data->stock ?></td>
 								<td class="text-right">
-									<button class="btn btn-xs btn-info" id="select" 
-									data-id="<?=$data->id_produk?>"
-									data-barcode="<?=$data->barcode?>"
-									data-nama_produk="<?=$data->nama_produk?>"
-									data-nama_jenis="<?=$data->nama_jenis?>"
-									data-stock="<?=$data->stock?>">
+									<button class="btn btn-xs btn-info" id="select" data-id="<?= $data->id_produk ?>" data-barcode="<?= $data->barcode ?>" data-nama_produk="<?= $data->nama_produk ?>" data-nama_jenis="<?= $data->nama_jenis ?>" data-stock="<?= $data->stock ?>">
 										<i class="fa fa-check"></i> Select
 									</button>
 								</td>
 							</tr>
-							<?php } ?>
-						</tbody>
-					</table>
-				</div>
+						<?php } ?>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
-	<script>
+</div>
+<script>
 	$(document).ready(function() {
 		$(document).on('click', '#select', function() {
 			var id_produk = $(this).data('id');
